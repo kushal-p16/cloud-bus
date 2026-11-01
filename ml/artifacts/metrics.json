@@ -1,0 +1,64 @@
+{
+  "model_name": "Random Forest Regressor",
+  "algorithm": "RandomForestRegressor(n_estimators=100, max_depth=16)",
+  "trained_at": "2026-11-01T20:43:16.628028",
+  "train_samples": 16320,
+  "test_samples": 4080,
+  "mae": 2.1,
+  "rmse": 2.66,
+  "r2_score": 0.9654,
+  "feature_importances": [
+    {
+      "feature": "previous_stop_passenger_count",
+      "importance": 0.9374
+    },
+    {
+      "feature": "previous_passenger_count",
+      "importance": 0.0384
+    },
+    {
+      "feature": "hour",
+      "importance": 0.0053
+    },
+    {
+      "feature": "bus_id",
+      "importance": 0.0047
+    },
+    {
+      "feature": "day_of_week",
+      "importance": 0.0035
+    },
+    {
+      "feature": "historical_route_demand",
+      "importance": 0.0033
+    },
+    {
+      "feature": "bus_capacity",
+      "importance": 0.0031
+    },
+    {
+      "feature": "route_id",
+      "importance": 0.0031
+    },
+    {
+      "feature": "is_peak_hour",
+      "importance": 0.001
+    },
+    {
+      "feature": "is_weekend",
+      "importance": 0.0004
+    }
+  ],
+  "features": [
+    "bus_id",
+    "route_id",
+    "hour",
+    "day_of_week",
+    "is_weekend",
+    "is_peak_hour",
+    "previous_passenger_count",
+    "previous_stop_passenger_count",
+    "bus_capacity",
+    "historical_route_demand"
+  ]
+}

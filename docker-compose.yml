@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: smartbus-db
+    restart: always
+    environment:
+      POSTGRES_USER: smartbus_admin
+      POSTGRES_PASSWORD: smartbus_secure_cloud_password_2026
+      POSTGRES_DB: smartbus_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartbus_admin -d smartbus_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: smartbus-backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://smartbus_admin:smartbus_secure_cloud_password_2026@db:5432/smartbus_db
+      SECRET_KEY: smartbus-cloud-jwt-production-secret-key-mysuru-sdg11
+      ENVIRONMENT: production
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: smartbus-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
