@@ -129,7 +129,7 @@ export const LandingPage: React.FC = () => {
             {/* Project Author Watermark Badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-950/90 via-slate-900 to-sky-950/90 border border-sky-400/50 text-xs font-bold text-sky-200 mb-4 shadow-lg shadow-sky-950/40">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Project by Kushal P and Indukiran C</span>
+              <span>Project by Kushal P</span>
               <span className="text-slate-500">•</span>
               <span className="text-slate-300 font-medium">Cloud Computing</span>
             </div>
@@ -574,7 +574,7 @@ export const LandingPage: React.FC = () => {
             <span className="font-bold text-slate-300">SmartBus AI</span> &copy; 2026. Academic Cloud
             Computing Project.
             <div className="text-xs font-bold text-sky-400 mt-0.5">
-              Project by Kushal P and Indukiran C
+              Project by Kushal P
             </div>
             <span className="block text-[11px] text-slate-500 mt-0.5">
               Designed for Mysuru City Transit Prototype (Simulated telemetry data).

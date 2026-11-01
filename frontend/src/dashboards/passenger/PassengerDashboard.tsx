@@ -146,7 +146,7 @@ export const PassengerDashboard: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                 <span>Mysuru City Transit</span>
                 <span className="px-2 py-0.5 rounded-full bg-blue-950/80 text-sky-300 border border-sky-400/40 text-[11px] font-bold">
-                  Project by Kushal P & Indukiran C
+                  Project by Kushal P
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold text-white">

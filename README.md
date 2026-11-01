@@ -4,7 +4,7 @@
 *Focus Prototype: Mysuru City Urban Transit Network, Karnataka, India*
 
 > ### 🏷️ PROJECT WATERMARK
-> **Project by Kushal P and Indukiran C**  
+> **Project by Kushal P**  
 > *"Smarter Journeys. Less Crowding. Sustainable Cities."*
 
 ---

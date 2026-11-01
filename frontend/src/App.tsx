@@ -60,7 +60,7 @@ export const AppContent: React.FC = () => {
         <div className="glass-panel px-4 py-2 rounded-full border border-sky-500/50 bg-slate-950/90 shadow-2xl backdrop-blur-md flex items-center gap-2.5 text-xs text-slate-100">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50" />
           <span className="font-extrabold tracking-wide bg-gradient-to-r from-white via-sky-200 to-sky-400 bg-clip-text text-transparent">
-            Project by Kushal P and Indukiran C
+            Project by Kushal P
           </span>
         </div>
       </div>

@@ -30,3 +30,14 @@ smartbus.db-journal
 *.sln
 *.sw?
 powershell.cmd
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc

@@ -83,17 +83,26 @@ def trigger_telemetry_tick(db: Session = Depends(get_db)):
         route = db.query(Route).filter(Route.id == route_id).first()
         base_demand = route.base_demand if route else 1.2
 
-        pred = predictor.predict(
-            bus_id=bus.id,
-            route_id=route_id,
-            hour=current_hour,
-            day_of_week=day_of_week,
-            bus_capacity=bus.capacity,
-            historical_route_demand=base_demand,
-        )
+        # Varied crowding profiles across the 20 fleet units
+        # Ensures authority operators see real alerts for overcrowded and near-full vehicles
+        bus_profile_idx = bus.id % 5
+        if bus_profile_idx == 0:
+            # Overcrowded Lead Bus
+            load_mult = random.uniform(1.02, 1.18)
+        elif bus_profile_idx == 1:
+            # Near Full Bus
+            load_mult = random.uniform(0.91, 0.99)
+        elif bus_profile_idx == 2:
+            # High Crowding Bus
+            load_mult = random.uniform(0.74, 0.88)
+        elif bus_profile_idx == 3:
+            # Moderate Load Bus
+            load_mult = random.uniform(0.48, 0.65)
+        else:
+            # Low Load Alternative Bus
+            load_mult = random.uniform(0.24, 0.38)
 
-        # Fluctuate passenger count slightly
-        passengers = max(0, min(int(bus.capacity * 1.2), pred["predicted_passenger_count"] + random.randint(-4, 4)))
+        passengers = int(bus.capacity * load_mult)
         occ_pct = round((passengers / bus.capacity) * 100, 1)
 
         if occ_pct <= 40:

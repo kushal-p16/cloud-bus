@@ -178,8 +178,44 @@ def seed_database(db: Session = None):
             passenger_check = db.query(User).filter(User.email == "passenger@smartbus.demo").first()
             if passenger_check:
                 passenger_check.hashed_password = get_password_hash("Passenger@123")
+
+            # Refresh latest occupancy records with realistic crowding distributions for demo
+            buses = db.query(Bus).all()
+            now = datetime.utcnow()
+            for bus in buses:
+                bus_profile = bus.id % 5
+                if bus_profile == 0:
+                    ratio = random.uniform(1.04, 1.15)   # OVERCROWDED (>100%)
+                    cat = "OVERCROWDED"
+                elif bus_profile == 1:
+                    ratio = random.uniform(0.92, 0.98)   # NEAR FULL (91-100%)
+                    cat = "NEAR_FULL"
+                elif bus_profile == 2:
+                    ratio = random.uniform(0.74, 0.88)   # HIGH (71-90%)
+                    cat = "HIGH"
+                elif bus_profile == 3:
+                    ratio = random.uniform(0.48, 0.65)   # MODERATE (41-70%)
+                    cat = "MODERATE"
+                else:
+                    ratio = random.uniform(0.25, 0.38)   # LOW (0-40%)
+                    cat = "LOW"
+
+                passengers = int(bus.capacity * ratio)
+                occ_pct = round((passengers / bus.capacity) * 100, 1)
+
+                rec = OccupancyRecord(
+                    bus_id=bus.id,
+                    route_id=bus.current_route_id or 1,
+                    timestamp=now,
+                    passenger_count=passengers,
+                    capacity=bus.capacity,
+                    occupancy_percentage=occ_pct,
+                    status=cat,
+                )
+                db.add(rec)
+
             db.commit()
-            print("Database already seeded. Demo credentials refreshed.")
+            print("Database already seeded. Demo credentials and live high-crowding fleet records refreshed.")
             return
 
         print("Seeding database...")
@@ -271,9 +307,20 @@ def seed_database(db: Session = None):
         # 5. Seed Historical Occupancy Records
         now = datetime.utcnow()
         for bus in created_buses:
+            bus_profile = bus.id % 5
             for hours_back in range(12, 0, -2):
                 timestamp = now - timedelta(hours=hours_back)
-                ratio = random.uniform(0.25, 1.05)
+                if bus_profile == 0:
+                    ratio = random.uniform(1.04, 1.16)   # OVERCROWDED
+                elif bus_profile == 1:
+                    ratio = random.uniform(0.92, 0.98)   # NEAR FULL
+                elif bus_profile == 2:
+                    ratio = random.uniform(0.74, 0.88)   # HIGH
+                elif bus_profile == 3:
+                    ratio = random.uniform(0.48, 0.65)   # MODERATE
+                else:
+                    ratio = random.uniform(0.24, 0.38)   # LOW
+
                 passengers = int(bus.capacity * ratio)
                 occ_pct = round((passengers / bus.capacity) * 100, 1)
 

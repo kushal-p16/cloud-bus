@@ -1,6 +1,5 @@
-from typing import List, Union
-from pydantic_settings import BaseSettings
-from pydantic import AnyHttpUrl, validator
+from typing import List, Optional
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -25,9 +24,15 @@ class Settings(BaseSettings):
 
     ENVIRONMENT: str = "development"
 
-    class Config:
-        case_sensitive = True
-        env_file = ".env"
+    # AWS Cloud Deployment Settings (Optional)
+    AWS_REGION: Optional[str] = "ap-south-1"
+    AWS_S3_BUCKET_NAME: Optional[str] = "smartbus-ai-artifacts-prod"
+
+    model_config = SettingsConfigDict(
+        case_sensitive=True,
+        env_file=".env",
+        extra="ignore"
+    )
 
 
 settings = Settings()
