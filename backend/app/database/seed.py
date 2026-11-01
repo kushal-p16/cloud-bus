@@ -170,16 +170,13 @@ def seed_database(db: Session = None):
         close_after = True
 
     try:
-        # Check if already seeded
+        # Check if already seeded — idempotent guard.
+        # On a serverless cold-start this is the common path; keep it cheap.
         admin_check = db.query(User).filter(User.email == "admin@smartbus.demo").first()
         if admin_check:
-            # Ensure passwords match demo credentials
-            admin_check.hashed_password = get_password_hash("Admin@123")
-            passenger_check = db.query(User).filter(User.email == "passenger@smartbus.demo").first()
-            if passenger_check:
-                passenger_check.hashed_password = get_password_hash("Passenger@123")
-
-            # Refresh latest occupancy records with realistic crowding distributions for demo
+            # Append a fresh set of live occupancy snapshots so the dashboard
+            # always shows realistic crowding data on start, without re-hashing
+            # passwords on every invocation (bcrypt is intentionally slow).
             buses = db.query(Bus).all()
             now = datetime.utcnow()
             for bus in buses:
@@ -215,7 +212,7 @@ def seed_database(db: Session = None):
                 db.add(rec)
 
             db.commit()
-            print("Database already seeded. Demo credentials and live high-crowding fleet records refreshed.")
+            print("Database already seeded. Live fleet occupancy records refreshed.")
             return
 
         print("Seeding database...")
