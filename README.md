@@ -3,6 +3,8 @@
 **Academic Cloud Computing Project | United Nations SDG 11: Sustainable Cities and Communities (Target 11.2)**  
 *Focus Prototype: Mysuru City Urban Transit Network, Karnataka, India*
 
+> ### 🏷️ PROJECT WATERMARK
+> **Project by Kushal P and Indukiran C**  
 > *"Smarter Journeys. Less Crowding. Sustainable Cities."*
 
 ---

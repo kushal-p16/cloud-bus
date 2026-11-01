@@ -2,9 +2,11 @@
 
 ## Design and Deployment of a Scalable Web Application on Cloud – Smart Public Bus Occupancy Prediction System
 
-**Course**: Cloud Computing & Application Development  
-**Academic Target**: United Nations Sustainable Development Goal 11 (Sustainable Cities and Communities) — Target 11.2  
-**Prototype City Focus**: Mysuru Urban Transit Network, Karnataka, India  
+> ### 🏷️ PROJECT WATERMARK & AUTHORSHIP
+> **Project by**: **Kushal P** and **Indukiran C**  
+> **Course**: Cloud Computing & Application Development  
+> **Academic Target**: United Nations Sustainable Development Goal 11 (Sustainable Cities and Communities) — Target 11.2  
+> **Focus Prototype**: Mysuru Urban Transit Network, Karnataka, India  
 
 ---
 

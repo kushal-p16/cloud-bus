@@ -309,6 +309,9 @@ export const AuthorityDashboard: React.FC = () => {
                 Operations Command
               </span>
               <div className="text-sm font-bold text-white mt-0.5">Control Center</div>
+              <div className="text-[11px] font-bold text-sky-300 mt-1">
+                Project by Kushal P & Indukiran C
+              </div>
             </div>
 
             <nav className="space-y-1">

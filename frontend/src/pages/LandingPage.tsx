@@ -126,6 +126,14 @@ export const LandingPage: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
+            {/* Project Author Watermark Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-950/90 via-slate-900 to-sky-950/90 border border-sky-400/50 text-xs font-bold text-sky-200 mb-4 shadow-lg shadow-sky-950/40">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Project by Kushal P and Indukiran C</span>
+              <span className="text-slate-500">•</span>
+              <span className="text-slate-300 font-medium">Cloud Computing</span>
+            </div>
+
             {/* SDG 11 Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/70 border border-blue-500/30 text-xs font-semibold text-sky-400 mb-6 shadow-sm">
               <Globe2 className="w-4 h-4 text-emerald-400 animate-spin-slow" />
@@ -565,6 +573,9 @@ export const LandingPage: React.FC = () => {
           <div>
             <span className="font-bold text-slate-300">SmartBus AI</span> &copy; 2026. Academic Cloud
             Computing Project.
+            <div className="text-xs font-bold text-sky-400 mt-0.5">
+              Project by Kushal P and Indukiran C
+            </div>
             <span className="block text-[11px] text-slate-500 mt-0.5">
               Designed for Mysuru City Transit Prototype (Simulated telemetry data).
             </span>

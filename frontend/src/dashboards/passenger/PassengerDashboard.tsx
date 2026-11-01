@@ -140,11 +140,14 @@ export const PassengerDashboard: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
             <div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-sky-400 mb-1">
+              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-sky-400 mb-1">
                 <Calendar className="w-4 h-4" />
                 <span>{formattedDate}</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                 <span>Mysuru City Transit</span>
+                <span className="px-2 py-0.5 rounded-full bg-blue-950/80 text-sky-300 border border-sky-400/40 text-[11px] font-bold">
+                  Project by Kushal P & Indukiran C
+                </span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
                 Welcome back, {user?.full_name || 'Passenger'}!

@@ -33,16 +33,19 @@ export const Navbar: React.FC = () => {
                 SDG 11
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 hidden sm:block">
-              Mysuru City Transit Occupancy Prediction System
+            <p className="text-[11px] text-sky-400 font-medium">
+              Project by Kushal P and Indukiran C
             </p>
           </div>
         </div>
 
-        {/* Center SDG Badge */}
-        <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-700/60 text-xs text-slate-300">
+        {/* Center Watermark & SDG Badge */}
+        <div className="hidden lg:flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-sky-500/40 text-xs text-slate-200 shadow-md">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="font-bold text-sky-300">Project by Kushal P & Indukiran C</span>
+          <span className="text-slate-500">|</span>
           <Globe className="w-3.5 h-3.5 text-emerald-400" />
-          <span>UN SDG 11.2: Sustainable & Accessible Public Transport</span>
+          <span className="text-slate-300">UN SDG 11.2</span>
         </div>
 
         {/* Right Actions */}
