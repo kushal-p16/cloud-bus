@@ -130,6 +130,15 @@ docker compose up --build -d
 
 ---
 
+## 🌐 Public Demo Deployment (Render)
+
+The repository includes a Render Blueprint for a one-service deployment of the
+frontend and API with PostgreSQL. Follow the [Render deployment guide](docs/deployment.md).
+The free database expires after 30 days, and the published demo uses public
+seeded accounts; do not enter real personal or operational data.
+
+---
+
 ## 📁 Project Directory Structure
 
 ```

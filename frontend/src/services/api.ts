@@ -11,7 +11,7 @@ import {
   RouteCrowding,
 } from '../types';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = import.meta.env.PROD ? '/api' : 'http://localhost:8000/api';
 
 function getAuthHeader(): Record<string, string> {
   const token = localStorage.getItem('smartbus_token');

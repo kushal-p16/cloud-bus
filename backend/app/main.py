@@ -1,8 +1,13 @@
 import os
+from pathlib import Path
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.exceptions import HTTPException as StarletteHTTPException
+from starlette.responses import Response
+from starlette.staticfiles import StaticFiles
+from starlette.types import Scope
 
 from app.core.config import settings
 from app.database.session import engine, Base
@@ -128,6 +133,20 @@ app.include_router(predictions.router, prefix=settings.API_V1_STR)
 app.include_router(analytics.router,   prefix=settings.API_V1_STR)
 app.include_router(reports.router,     prefix=settings.API_V1_STR)
 app.include_router(users.router,       prefix=settings.API_V1_STR)
+
+frontend_dist = Path(__file__).resolve().parents[1] / "static"
+
+if frontend_dist.is_dir():
+    class SPAStaticFiles(StaticFiles):
+        async def get_response(self, path: str, scope: Scope) -> Response:
+            try:
+                return await super().get_response(path, scope)
+            except StarletteHTTPException as exc:
+                if exc.status_code != 404 or path == "api" or path.startswith("api/"):
+                    raise
+                return await super().get_response("index.html", scope)
+
+    app.mount("/", SPAStaticFiles(directory=frontend_dist, html=True), name="frontend")
 
 
 # ---------------------------------------------------------------------------

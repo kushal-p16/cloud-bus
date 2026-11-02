@@ -1,6 +1,47 @@
-# SmartBus AI — AWS Cloud Deployment Guide
+# SmartBus AI — Render Deployment Guide
 
-This guide describes how to deploy **SmartBus AI** onto Amazon Web Services (AWS) using production-grade infrastructure practices.
+This repository includes a Render Blueprint that deploys the React frontend and
+FastAPI backend together in one web service, with a managed PostgreSQL database.
+The app and API use the same origin, so no browser-side credentials or CORS
+configuration are needed.
+
+## Deploy a public demo
+
+1. Push this repository, including `render.yaml`, to GitHub.
+2. Sign in to [Render](https://render.com/) and create a new **Blueprint**.
+3. Connect this repository and confirm the resources shown in `render.yaml`.
+4. Choose **Apply**. Render builds the frontend and backend, creates PostgreSQL,
+   generates a `SECRET_KEY`, and publishes the app at the web service URL.
+5. Wait for the service health check to pass, then open the service URL.
+
+The blueprint uses Render's free plans for a no-cost demo. Free web services can
+spin down while idle, and free PostgreSQL databases expire after 30 days. Do not
+use this configuration for permanent data or production traffic; select paid
+plans in Render and arrange database backups for a persistent deployment.
+
+The app seeds public demo accounts. Anyone can use the credentials shown in the
+README, so treat this deployment as a public demo and do not enter real personal
+or operational data.
+
+Render keeps the generated `SECRET_KEY` and database connection string in its
+environment settings. Do not paste account passwords, database URLs, or API
+tokens into chat or commit them to the repository.
+
+## Docker Compose (local)
+
+```bash
+docker compose up --build -d
+```
+
+- Frontend: http://localhost:3000
+- Backend API docs: http://localhost:8000/docs
+- Health check: http://localhost:8000/health
+
+---
+
+# AWS Cloud Deployment (alternative)
+
+The following describes an alternative deployment of **SmartBus AI** on AWS.
 
 ---
 
