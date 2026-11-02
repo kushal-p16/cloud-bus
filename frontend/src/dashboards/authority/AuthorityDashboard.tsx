@@ -310,7 +310,7 @@ export const AuthorityDashboard: React.FC = () => {
               </span>
               <div className="text-sm font-bold text-white mt-0.5">Control Center</div>
               <div className="text-[11px] font-bold text-sky-300 mt-1">
-                Project by Kushal P
+                Project by Kushal P & indukiran C
               </div>
             </div>
 

@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
               </span>
             </div>
             <p className="text-[11px] text-sky-400 font-medium">
-              Project by Kushal P
+              Project by Kushal P & indukiran C
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
         {/* Center Watermark & SDG Badge */}
         <div className="hidden lg:flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-sky-500/40 text-xs text-slate-200 shadow-md">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-bold text-sky-300">Project by Kushal P</span>
+          <span className="font-bold text-sky-300">Project by Kushal P & indukiran C</span>
           <span className="text-slate-500">|</span>
           <Globe className="w-3.5 h-3.5 text-emerald-400" />
           <span className="text-slate-300">UN SDG 11.2</span>
